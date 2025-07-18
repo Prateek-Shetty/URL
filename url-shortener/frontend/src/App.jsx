@@ -3,12 +3,13 @@ import { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 
-
 function App() {
   const [longUrl, setLongUrl] = useState('');
   const [shortUrl, setShortUrl] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const API = import.meta.env.VITE_API_BASE_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,8 +18,7 @@ function App() {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:5000/api/shorten', { longUrl });
-
+      const res = await axios.post(`${API}/shorten`, { longUrl });
       setShortUrl(res.data.shortUrl);
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong.');
