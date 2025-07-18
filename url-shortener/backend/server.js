@@ -9,15 +9,19 @@ dotenv.config();
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-app.use('/', urlRoutes);
+// Routes
+app.use('/api', urlRoutes); // for POST /api/shorten
+app.use('/', urlRoutes);    // for GET /:shortId
 
+// MongoDB connection
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ Connected to MongoDB');
     app.listen(PORT, () => {

@@ -1,0 +1,26 @@
+.app {
+  font-family: sans-serif;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+input {
+  padding: 0.5rem;
+  width: 300px;
+  font-size: 1rem;
+}
+
+button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.result {
+  margin-top: 2rem;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  margin-top: 1rem;
+}
